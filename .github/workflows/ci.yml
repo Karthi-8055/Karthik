@@ -2,25 +2,20 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]  # Change to your Node version
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 18
 
     - name: Install dependencies
       run: npm install
